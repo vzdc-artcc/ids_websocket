@@ -55,6 +55,7 @@ app.post('/api/vatis/flow', async (req, res) => {
             const data = await response.json();
             if (data !== false) {
                 io.emit(`${data.facilityId}-flow`, data.runways); // Emit an event to all connected clients
+                io.emit(`${data.facilityId}-atis`, req.body);
             }
         }
 
